@@ -69,4 +69,4 @@ Acknowledgements
 - Built with [React](https://reactjs.org/)
 
 
-Made with ❤ by [Your Name](souvik666)
+Made with ❤ by [souvik](souvik666)
