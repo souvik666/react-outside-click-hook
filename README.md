@@ -69,4 +69,4 @@ const Example = () => {
 - Built with [React](https://reactjs.org/)
 
 
-Made with ❤ by [souvik](souvik666)
+Made with ❤ by [souvik](@souvik666)
