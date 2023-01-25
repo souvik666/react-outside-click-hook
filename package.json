@@ -1,17 +1,20 @@
 {
-  "name": "@react-auto-suggestion-input",
+  "name": "@souvik666/react-auto-suggestion-input",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/react-auto-suggestion-input"
+    "registry": "https://npm.pkg.github.com/souvik666"
   },
   "version": "0.0.0-development",
-  "release": { "branches": [ "main" ] },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "description": "A custom component that attaches a div element to an input field. The div will be positioned directly below the input and will be hidden or shown depending on the input value ",
   "scripts": {
     "rollup": "rollup -c",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "semantic-release": "semantic-release"
+    "build-storybook": "build-storybook"
   },
   "author": "souvik dutta",
   "license": "ISC",
@@ -59,6 +62,6 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/souvik666/react-auto-suggestion-input.git"
+    "url": "git://github.com/souvik666/react-auto-suggestion-input"
   }
 }
