@@ -51,7 +51,7 @@ const Example = () => {
 };
 ```
 
-Props
+## Props
 - `suggestions` (required): An array of suggestions to show
 - `onSelect` (required): A callback function that is called when a suggestion is selected. It will be called with the selected suggestion as the argument
 - `triggerCharacter` (optional): A string that specifies the trigger character to show suggestions. Default value is `@`
@@ -59,12 +59,12 @@ Props
 - `inputStyles` (optional): An object that contains the styles for the input field
 
 
-Future Work
+## Future Work
 - Add ability to navigate through suggestions using arrow keys
 - Add ability to customize the appearance of the suggestion list
 
 
-Acknowledgements
+## Acknowledgements
 - Inspired by the auto-suggestion feature in Apple's Mail app
 - Built with [React](https://reactjs.org/)
 
