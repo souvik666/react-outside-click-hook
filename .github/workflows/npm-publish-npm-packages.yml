@@ -7,15 +7,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     permissions: write-all
-    
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 12
-  
+
       - run: npm install
       - run: npm run rollup
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
+      - run: npm publish
       - uses: JS-DevTools/npm-publish@v1
       - uses: actions/setup-node@v3
         with:
