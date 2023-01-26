@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 12
+      - run: npm token create
       - run: npm install
       - run: npm run rollup
       - uses: JS-DevTools/npm-publish@v1
