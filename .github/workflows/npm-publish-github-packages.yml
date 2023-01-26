@@ -6,17 +6,32 @@ on:
       - "releases"
 
 jobs:
-  version:
+  versioning_job:
     runs-on: ubuntu-latest
+    name: RainMachine Parsers versioning
     steps:
-      - uses: actions/checkout@v2
-      - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-      - run: git config user.name "$GITHUB_ACTOR"
-      - run: npm version minor -m "v%s"
-      - run: VERSION=$(node -p "require('./package.json').version")
-      - run: git tag ${VERSION}
-      - run: git push "https://$GITHUB_ACTOR:${{ secrets.ACCESS_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --follow-tags
-      - run: git push "https://$GITHUB_ACTOR:${{ secrets.ACCESS_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --tags
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Automatic Versioning
+        uses: nicupavel/action-files-version-increment@v3
+      - name: Get the output time
+        run: echo "The time was ${{ steps.versioning_job.outputs.time }}"
+      - name: Get list of modified files
+        run: echo "Modified files ${{ steps.versioning_job.outputs.modified_files }}"
+      - id: commit_if_modified
+        name: Commit metadata file
+        if: steps.versioning_job.outputs.modified_files
+        run: |
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --local user.name "$GITHUB_ACTOR"
+          git commit -am "Versioning for ${{ steps.versioning_job.outputs.modified_files }}"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.head_ref }}
   build:
     runs-on: ubuntu-latest
     permissions:
