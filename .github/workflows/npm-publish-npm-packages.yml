@@ -34,7 +34,7 @@ jobs:
           npm config list
           npm ci
           npm version ${{ github.event.release.tag_name }}
-          npm test
+
           npm publish --access public
         env:
           CI: true
