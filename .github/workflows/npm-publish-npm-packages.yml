@@ -1,8 +1,9 @@
 name: Publish to NPMJS and GPR
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
   publish-to-npm-and-gpr:
