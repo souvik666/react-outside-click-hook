@@ -1,4 +1,9 @@
 name: Publish package to GitHub Packages
+  uses: docker/login-action@v1
+  with:
+    registry: ghcr.io
+    username: ${{github.actor}}
+    password: ${{secrets.GITHUB_TOKEN}}
 on:
   push:
     branches:
