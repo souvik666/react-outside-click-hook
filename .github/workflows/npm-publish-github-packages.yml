@@ -5,17 +5,20 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: 'bump type, major or minor or patch or empty string'
-        default: ''
+        description: "bump type, major or minor or patch or empty string"
+        default: ""
       dry_run:
-        description: 'dry run, true or false'
-        default: 'false'
+        description: "dry run, true or false"
+        default: "false"
       draft:
-        description: 'draft, true or false'
-        default: 'false'
+        description: "draft, true or false"
+        default: "false"
       pre_release:
-        description: 'pre release, true or false'
-        default: 'false'
+        description: "pre release, true or false"
+        default: "false"
+      base-branch:
+        description: "target branch name"
+        default: "main"
 
 jobs:
   release:
@@ -29,11 +32,12 @@ jobs:
           node-version: 12
       - run: npm install
       - run: npm run rollup
-      
+
       - uses: MeilCli/bump-release-action@v1
         with:
-          config_path: '.github/bump.yml'
+          config_path: ".github/bump.yml"
           bump: ${{ github.event.inputs.bump }}
           dry_run: ${{ github.event.inputs.dry_run }}
           draft: ${{ github.event.inputs.draft }}
           pre_release: ${{ github.event.inputs.pre_release }}
+          base-branch: ${{ github.event.inputs.base-branch }}
