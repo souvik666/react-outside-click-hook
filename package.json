@@ -1,6 +1,6 @@
 {
   "name": "@souvik666/react-outside-click-hook",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/react-outside-click-hook",
     "ignore": [
