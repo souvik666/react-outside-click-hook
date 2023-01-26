@@ -1,9 +1,9 @@
 {
   "name": "@souvik666/react-auto-suggestion-input",
+  "version": "0.2.1",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/react-auto-suggestion-input"
   },
-  "version": "0.2.1",
   "description": "A simple template for a custom React component library",
   "scripts": {
     "rollup": "rollup -c",
