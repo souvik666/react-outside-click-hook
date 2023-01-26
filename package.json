@@ -1,8 +1,8 @@
 {
-  "name": "@souvik666/react-auto-suggestion-input",
+  "name": "@souvik666/react-outside-click-hook",
   "version": "0.2.15",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/react-auto-suggestion-input"
+    "registry": "https://npm.pkg.github.com/react-outside-click-hook"
   },
   "description": "A simple template for a custom React component library",
   "scripts": {
@@ -56,10 +56,10 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/souvik666/react-auto-suggestion-input.git"
+    "url": "https://github.com/souvik666/react-outside-click-hook.git"
   },
   "bugs": {
-    "url": "https://github.com/souvik666/react-auto-suggestion-input/issues"
+    "url": "https://github.com/souvik666/react-outside-click-hook.git/issues"
   },
   "peerDependencies": {
     "react": ">=16.0.1",
