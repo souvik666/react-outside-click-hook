@@ -1,56 +1,39 @@
-name: Publish package to GitHub Packages
+# .github/workflows/release.yml:
+name: Release
+
 on:
-  push:
-    branches:
-      - "main"
-      - "releases"
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'bump type, major or minor or patch or empty string'
+        default: ''
+      dry_run:
+        description: 'dry run, true or false'
+        default: 'false'
+      draft:
+        description: 'draft, true or false'
+        default: 'false'
+      pre_release:
+        description: 'pre release, true or false'
+        default: 'false'
 
 jobs:
-  bump-version:
-    name: "Bump Version on master"
+  release:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-  Git Semantic Version:
-    name: Git Semantic Version
-    uses: PaulHatch/semantic-version@v5.0.3
     steps:
-      - name: "Checkout source code"
-        uses: "actions/checkout@v2"
+      - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.ref }}
-      - name: "cat package.json"
-        run: cat ./package.json
-      - name: "Automated Version Bump"
-        id: version-bump
-        uses: "phips28/gh-action-bump-version@master"
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
         with:
-          tag-prefix: "v"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: "cat package.json"
-        run: cat ./package.json
-      - name: "Output Step"
-        env:
-          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
-        run: echo "new tag $NEW_TAG"
-
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
-    steps:
-      - uses: actions/checkout@v3
-      # Setup .npmrc file
-      - uses: actions/setup-node@v3
+          node-version: 12
+      - run: npm install
+      - run: npm run build
+      - run: npm run test
+      - uses: MeilCli/bump-release-action@v1
         with:
-          node-version: "16.x"
-          registry-url: "https://npm.pkg.github.com"
-          # Defaults to the user or organization that owns the workflow file
-          scope: "@souvik666"
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          config_path: '.github/bump.yml'
+          bump: ${{ github.event.inputs.bump }}
+          dry_run: ${{ github.event.inputs.dry_run }}
+          draft: ${{ github.event.inputs.draft }}
+          pre_release: ${{ github.event.inputs.pre_release }}
