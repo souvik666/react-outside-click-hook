@@ -19,6 +19,7 @@ release:
 branch:
   version-branch-prefix: 'v'
   bump-version-commit-prefix: 'v'
+  base-branch: 'main'
 categories:
   - title: 'Breaking Changes!'
     labels:

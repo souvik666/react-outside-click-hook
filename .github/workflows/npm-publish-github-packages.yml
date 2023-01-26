@@ -16,9 +16,7 @@ on:
       pre_release:
         description: "pre release, true or false"
         default: "false"
-      base-branch:
-        description: "target branch name"
-        default: "main"
+     
 
 jobs:
   release:
@@ -40,4 +38,4 @@ jobs:
           dry_run: ${{ github.event.inputs.dry_run }}
           draft: ${{ github.event.inputs.draft }}
           pre_release: ${{ github.event.inputs.pre_release }}
-          base-branch: ${{ github.event.inputs.base-branch }}
+          
