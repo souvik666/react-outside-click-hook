@@ -46,7 +46,11 @@ Also, the `return` is the `ref` variable that should be attached to the DOM elem
 ## Example
 
 ```tsx
+<<<<<<< HEAD
 import { useOutsideClick } from "@souvik666/react-outside-click-hook";
+=======
+import useOutsideClick from "@souvik666/react-outside-click-hook";
+>>>>>>> 227016561a49ec4a8c1ae86c7451a6b6272e399d
 
 const MyComponent = () => {
 
