@@ -5,26 +5,30 @@ A React hook for capturing outside click events. The `useOutsideClick` hook allo
 ## Installation
 
 ```bash
-npm install use-outside-click-hook
+npm i @souvik666/react-outside-click-hook
 
 ```
 
 ## Usage
 
 ```tsx
-import useOutsideClick from "use-outside-click-hook";
+import { useOutsideClick } from "@souvik666/react-outside-click-hook";
 
-function MyComponent() {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useOutsideClick<HTMLDivElement>(() => setIsOpen(false), isOpen);
+const MyComponent = () => {
+
+  const [isClickedOutside, ref] = useOutsideClick<HTMLDivElement>({
+    callback: () => console.log("clicked outside"),
+  });
 
   return (
-    <div>
-      <button onClick={() => setIsOpen(!isOpen)}>Toggle</button>
-      {isOpen && <div ref={ref}>Click outside of this box to close</div>}
-    </div>
+    <>
+      <div ref={ref}>Click outside of me</div>
+      {isClickedOutside && <div>clicked outside</div>}
+    </>
   );
-}
+};
+export default MyComponent;
+
 ```
 
 ## Parameters
@@ -42,26 +46,24 @@ Also, the `return` is the `ref` variable that should be attached to the DOM elem
 ## Example
 
 ```tsx
-import useOutsideClick from "use-outside-click-hook";
+import { useOutsideClick } from "@souvik666/react-outside-click-hook";
 
-function MyModal() {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useOutsideClick<HTMLDivElement>(() => setIsOpen(false), isOpen);
+const MyComponent = () => {
+
+  const [isClickedOutside, ref] = useOutsideClick<HTMLDivElement>({
+    callback: () => console.log("clicked outside"),
+  });
 
   return (
-    <div>
-      <button onClick={() => setIsOpen(!isOpen)}>Open Modal</button>
-      {isOpen && (
-        <div className="modal" ref={ref}>
-          <div className="modal-content">
-            <p>Modal Content</p>
-            <button onClick={() => setIsOpen(false)}>Close</button>
-          </div>
-        </div>
-      )}
-    </div>
+    <>
+      <div ref={ref}>Click outside of me</div>
+      {isClickedOutside && <div>clicked outside</div>}
+    </>
   );
-}
+};
+
+export default MyComponent;
+
 ```
 
 ## FAQ
