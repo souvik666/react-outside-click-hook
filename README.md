@@ -66,7 +66,8 @@ function MyModal() {
 
 ## FAQ
 
-Q: How do I attach the returned ref to a DOM element?
+`Q: How do I attach the returned ref to a DOM element?`
+
 A: You can attach the ref to a DOM element using the `ref` attribute. For example, if your component has a div that you want to detect clicks outside of, you can do something like this:
 
 ```tsx
@@ -74,10 +75,12 @@ const ref = useOutsideClick<HTMLDivElement>(myCallback);
 return <div ref={ref}>Content goes here</div>;
 ```
 
-Q: What is the second parameter for?
+`Q: What is the second parameter for?`
+
 A: The second parameter is an optional boolean that indicates whether the element is open or closed. If you pass `true`, the hook will call the callback function when a click outside of the element occurs. If you pass `false`, the hook will do nothing. If you don't pass this parameter, the hook will assume that the element is always open.
 
-Q: Can I use this hook with a class component?
+`Q: Can I use this hook with a class component? `
+
 A: No, this hook can only be used in functional components.
 
 ## Please note that, you should use this hook in a functional component.
