@@ -1,6 +1,6 @@
 {
   "name": "@souvik666/react-auto-suggestion-input",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/react-auto-suggestion-input"
   },
@@ -60,5 +60,9 @@
   },
   "bugs": {
     "url": "https://github.com/souvik666/react-auto-suggestion-input/issues"
-  }
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+ }
 }

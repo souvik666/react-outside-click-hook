@@ -1,7 +1,7 @@
 # .github/bump.yml
 release:
   title-prefix: 'v'
-  initial-version: '0.2.3'
+  initial-version: '0.2.6'
   tag-prefix: 'v'
   commit-note-replacers:
     - replace-prefix: 'breaking: '
