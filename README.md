@@ -5,14 +5,14 @@ A React hook for capturing outside click events. The `useOutsideClick` hook allo
 ## Installation
 
 ```bash
-npm install use-outside-click-hook
+npm i @souvik666/react-outside-click-hook
 
 ```
 
 ## Usage
 
 ```tsx
-import useOutsideClick from "use-outside-click-hook";
+import useOutsideClick from "@souvik666/react-outside-click-hook";
 
 function MyComponent() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ Also, the `return` is the `ref` variable that should be attached to the DOM elem
 ## Example
 
 ```tsx
-import useOutsideClick from "use-outside-click-hook";
+import useOutsideClick from "@souvik666/react-outside-click-hook";
 
 function MyModal() {
   const [isOpen, setIsOpen] = useState(false);
