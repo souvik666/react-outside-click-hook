@@ -16,7 +16,6 @@ on:
       pre_release:
         description: "pre release, true or false"
         default: "false"
-     
 
 jobs:
   release:
@@ -28,7 +27,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: "16.x"
       - run: npm install
       - run: npm run rollup
 
@@ -39,4 +38,3 @@ jobs:
           dry_run: ${{ github.event.inputs.dry_run }}
           draft: ${{ github.event.inputs.draft }}
           pre_release: ${{ github.event.inputs.pre_release }}
-          

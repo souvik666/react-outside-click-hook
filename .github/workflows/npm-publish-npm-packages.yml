@@ -1,24 +1,51 @@
-name: Publish Package to npmjs
+name: Publish to NPMJS and GPR
+
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
+
 jobs:
-  publish:
+  publish-to-npm-and-gpr:
     runs-on: ubuntu-latest
-    permissions: write-all
-
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      # Checkout the repo
+      - uses: actions/checkout@master
         with:
-          node-version: 12
+          # "ref" specifies the branch to check out.
+          # "github.event.release.target_commitish" is a global variable and specifies the branch the release targeted
+          ref: ${{ github.event.release.target_commitish }}
 
-      - run: npm install
-      - run: npm run rollup
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      - run: npm publish
-      - uses: JS-DevTools/npm-publish@v1
-      - uses: actions/setup-node@v3
+      # Set up git
+      - name: Setup git
+        run: |
+          git config user.name "Actions User"
+          git config user.email noreply@github.com
+
+      # Publish to NPMJS
+      - uses: actions/setup-node@master
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org/"
+      - name: Publish to NPMJS
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm config set scope "@affrae"
+          npm config list
+          npm ci
+          npm version ${{ github.event.release.tag_name }}
+          npm test
+          npm publish --access public
+        env:
+          CI: true
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+      # Publish to GitHub Package Registry
+      - uses: actions/setup-node@master
+        with:
+          node-version: "16.x"
+          registry-url: https://npm.pkg.github.com/
+          scope: "@affrae"
+      - name: Publish to GitHub Package Registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{github.token}}
