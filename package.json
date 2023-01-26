@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/react-auto-suggestion-input"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple template for a custom React component library",
   "scripts": {
     "rollup": "rollup -c",
@@ -53,5 +53,12 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/souvik666/react-auto-suggestion-input.git"
+  },
+  "bugs": {
+    "url": "https://github.com/souvik666/react-auto-suggestion-input/issues"
+  }
 }
