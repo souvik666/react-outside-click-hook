@@ -11,13 +11,12 @@ npm install use-outside-click-hook
 
 ## Usage
 
-```jsx
+```tsx
 import useOutsideClick from "use-outside-click-hook";
 
 function MyComponent() {
   const [isOpen, setIsOpen] = useState(false);
-  const ref =
-    useOutsideClick < HTMLDivElement > (() => setIsOpen(false), isOpen);
+  const ref = useOutsideClick<HTMLDivElement>(() => setIsOpen(false), isOpen);
 
   return (
     <div>
@@ -42,13 +41,12 @@ Also, the `return` is the `ref` variable that should be attached to the DOM elem
 
 ## Example
 
-```jsx
+```tsx
 import useOutsideClick from "use-outside-click-hook";
 
 function MyModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const ref =
-    useOutsideClick < HTMLDivElement > (() => setIsOpen(false), isOpen);
+  const ref = useOutsideClick<HTMLDivElement>(() => setIsOpen(false), isOpen);
 
   return (
     <div>
@@ -66,15 +64,14 @@ function MyModal() {
 }
 ```
 
-
 ## FAQ
 
 Q: How do I attach the returned ref to a DOM element?
 A: You can attach the ref to a DOM element using the `ref` attribute. For example, if your component has a div that you want to detect clicks outside of, you can do something like this:
 
-```jsx
-const ref = useOutsideClick(myCallback);
-return <div ref={ref}>Content goes here</div>
+```tsx
+const ref = useOutsideClick<HTMLDivElement>(myCallback);
+return <div ref={ref}>Content goes here</div>;
 ```
 
 Q: What is the second parameter for?
@@ -82,6 +79,5 @@ A: The second parameter is an optional boolean that indicates whether the elemen
 
 Q: Can I use this hook with a class component?
 A: No, this hook can only be used in functional components.
-
 
 ## Please note that, you should use this hook in a functional component.
