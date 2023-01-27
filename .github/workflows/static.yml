@@ -11,9 +11,9 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     permissions:
-    contents: read
-    pages: write
-    id-token: write
+      - contents: read
+      - pages: write
+      - id-token: write
     steps:
       - id: build-publish
         uses: bitovi/github-actions-react-to-ghp@v1.2.0
