@@ -1,4 +1,4 @@
-# useOutsideClick
+## useOutsideClick
 
 A Custom React hook for capturing outside click events. The `useOutsideClick` hook allows you to detect when a user clicks outside of a specific element on your website. It returns a reference to the element, which you can attach to a DOM node using the `ref` attribute, and a boolean indicating whether the user has clicked outside of the element.
 
